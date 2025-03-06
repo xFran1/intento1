@@ -14,3 +14,10 @@ Route::post("/login/user",[LoginController::class,'ComprobarUserInicio'])->name(
 
 Route::get("/login",[LoginController::class,'loadLogin']); // Cargar inicio sesión
 
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/index', [UserController::class, 'index']);
+    
+    Route::get('/profile', [UserController::class, 'show']);
+
+});
